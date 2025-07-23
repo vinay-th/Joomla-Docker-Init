@@ -1,0 +1,26 @@
+services:
+  joomla:
+    image: joomla
+    ports:
+      - 8080:80
+    environment:
+      JOOMLA_DB_HOST: db
+      JOOMLA_DB_USER: joomla
+      JOOMLA_DB_PASSWORD: joomla
+      JOOMLA_DB_NAME: joomla
+    volumes:
+      - joomla_data:/var/www/html
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: joomla
+      MYSQL_USER: joomla
+      MYSQL_PASSWORD: joomla
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  joomla_data:
+  db_data:
